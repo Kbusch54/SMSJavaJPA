@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Table(name = "courses")
 @IdClass(StudentCoursesID.class)
 @NamedQueries({
-		@NamedQuery(name = "CoursesByStudent", query = "Select c from StudentCourses c where c.eMail = :email") })
+		@NamedQuery(name = "CoursesByStudent", query = "Select c from Course c left join StudentCourses sc on c.id = sc.courseID  where sc.eMail = :email") })
 public class StudentCourses {
 	@Id
 	@Column(name = "student_email")
@@ -114,3 +114,4 @@ public class StudentCourses {
 	}
 
 }
+
